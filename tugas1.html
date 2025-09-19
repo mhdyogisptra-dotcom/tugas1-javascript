@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Luas Bangun Datar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .shape-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .shape-title {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin: 8px 0;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .result {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tugas 1</h1>
+        
+        <!-- Persegi Panjang -->
+        <div class="shape-box">
+            <h2 class="shape-title">Persegi Panjang</h2>
+            <p>Rumus: Panjang × Lebar</p>
+            <input type="number" id="panjang" placeholder="Masukkan panjang">
+            <input type="number" id="lebar" placeholder="Masukkan lebar">
+            <button onclick="hitungLuasPersegiPanjang()">Hitung Luas</button>
+            <div id="hasilPersegiPanjang" class="result">Hasil akan ditampilkan di sini</div>
+        </div>
+        
+        <!-- Bujur Sangkar (Persegi) -->
+        <div class="shape-box">
+            <h2 class="shape-title">Bujur Sangkar (Persegi)</h2>
+            <p>Rumus: Sisi × Sisi</p>
+            <input type="number" id="sisi" placeholder="Masukkan sisi">
+            <button onclick="hitungLuasBujurSangkar()">Hitung Luas</button>
+            <div id="hasilBujurSangkar" class="result">Hasil akan ditampilkan di sini</div>
+        </div>
+        
+        <!-- Segitiga -->
+        <div class="shape-box">
+            <h2 class="shape-title">Segitiga</h2>
+            <p>Rumus: ½ × Alas × Tinggi</p>
+            <input type="number" id="alas" placeholder="Masukkan alas">
+            <input type="number" id="tinggi" placeholder="Masukkan tinggi">
+            <button onclick="hitungLuasSegitiga()">Hitung Luas</button>
+            <div id="hasilSegitiga" class="result">Hasil akan ditampilkan di sini</div>
+        </div>
+    </div>
+
+    <script>
+        // ==============================
+        // FUNGSI MENGHITUNG LUAS PERSEGI PANJANG
+        // ==============================
+        
+        // Deklarasi fungsi untuk menghitung luas persegi panjang
+        function hitungLuasPersegiPanjang() {
+            // Mengambil nilai dari input dengan id 'panjang' dan 'lebar'
+            // parseFloat digunakan untuk mengonversi nilai string ke angka desimal
+            let panjang = parseFloat(document.getElementById('panjang').value);
+            let lebar = parseFloat(document.getElementById('lebar').value);
+            
+            // Validasi input: memastikan nilai yang dimasukkan valid (bukan NaN)
+            if (isNaN(panjang) || isNaN(lebar)) {
+                alert("Masukkan angka yang valid untuk panjang dan lebar!");
+                return;
+            }
+            
+            // Menghitung luas persegi panjang dengan rumus: panjang × lebar
+            let luas = panjang * lebar;
+            
+            // Menampilkan hasil perhitungan di elemen dengan id 'hasilPersegiPanjang'
+            // toFixed(2) digunakan untuk membatasi angka desimal menjadi 2 digit
+            document.getElementById('hasilPersegiPanjang').innerHTML = 
+                `Luas Persegi Panjang: ${panjang} × ${lebar} = ${luas.toFixed(2)}`;
+        }
+        
+        // ==============================
+        // FUNGSI MENGHITUNG LUAS BUJUR SANGKAR
+        // ==============================
+        
+        // Deklarasi fungsi untuk menghitung luas bujur sangkar (persegi)
+        function hitungLuasBujurSangkar() {
+            // Mengambil nilai dari input dengan id 'sisi'
+            let sisi = parseFloat(document.getElementById('sisi').value);
+            
+            // Validasi input
+            if (isNaN(sisi)) {
+                alert("Masukkan angka yang valid untuk sisi!");
+                return;
+            }
+            
+            // Menghitung luas bujur sangkar dengan rumus: sisi × sisi
+            let luas = sisi * sisi;
+            
+            // Menampilkan hasil perhitungan
+            document.getElementById('hasilBujurSangkar').innerHTML = 
+                `Luas Bujur Sangkar: ${sisi} × ${sisi} = ${luas.toFixed(2)}`;
+        }
+        
+        // ==============================
+        // FUNGSI MENGHITUNG LUAS SEGITIGA
+        // ==============================
+        
+        // Deklarasi fungsi untuk menghitung luas segitiga
+        function hitungLuasSegitiga() {
+            // Mengambil nilai dari input dengan id 'alas' dan 'tinggi'
+            let alas = parseFloat(document.getElementById('alas').value);
+            let tinggi = parseFloat(document.getElementById('tinggi').value);
+            
+            // Validasi input
+            if (isNaN(alas) || isNaN(tinggi)) {
+                alert("Masukkan angka yang valid untuk alas dan tinggi!");
+                return;
+            }
+            
+            // Menghitung luas segitiga dengan rumus: ½ × alas × tinggi
+            let luas = 0.5 * alas * tinggi;
+            
+            // Menampilkan hasil perhitungan
+            document.getElementById('hasilSegitiga').innerHTML = 
+                `Luas Segitiga: ½ × ${alas} × ${tinggi} = ${luas.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
